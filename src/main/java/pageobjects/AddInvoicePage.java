@@ -6,6 +6,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.Select;
 
+import utilities.TimingManager;
+
 public class AddInvoicePage {
 	
 	public static By invoiceNoDivInput = By.xpath("//div[@id='invoiceNo_add']/input");
@@ -16,6 +18,7 @@ public class AddInvoicePage {
 	public static By dueDateDivInput = By.xpath("//div[@id='invoice_dueDate']/input");
 	public static By commentsDivInput = By.xpath("//div[@id='comments_add']/input");
 	public static By createButton = By.id("createButton");
+	public static By addInvoiceLink = By.linkText("Add Invoice");
 	
 	public void createInvoice(WebDriver driver) {
 		// add an invoice
@@ -40,5 +43,10 @@ public class AddInvoicePage {
 		driver.findElement(commentsDivInput).clear();
 		driver.findElement(commentsDivInput).sendKeys("Installed toilet handle.");
 		driver.findElement(createButton).click();
+		TimingManager.waitForPageLoad(driver, "addInvoice");	
+	}
+
+	public void clickAddInvoice(WebDriver driver) {
+		driver.findElement(addInvoiceLink).click();		
 	}
 }
