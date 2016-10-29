@@ -6,6 +6,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.Select;
 
+import db.InvoiceData;
 import utilities.TimingManager;
 
 public class AddInvoicePage {
@@ -28,25 +29,32 @@ public class AddInvoicePage {
 		// int invoiceNumber = ThreadLocalRandom.current().nextInt(10000, 10200);
 
 		// hardcoded
-		int invoiceNumber = 10030;
-		driver.findElement(invoiceNoDivInput).sendKeys(Integer.toString(invoiceNumber));
-
-		driver.findElement(companyNameDivInput).clear();
-		driver.findElement(companyNameDivInput).sendKeys("All Day Plumbing");
-		driver.findElement(typeOfWorkDivInput).clear();
-		driver.findElement(typeOfWorkDivInput).sendKeys("Plumbing");
-		driver.findElement(costDivInput).clear();
-		driver.findElement(costDivInput).sendKeys("75.00");
-		new Select(driver.findElement(selectStatusSelect)).selectByVisibleText("Draft");
-		driver.findElement(dueDateDivInput).clear();
-		driver.findElement(dueDateDivInput).sendKeys("2016-04-30");
-		driver.findElement(commentsDivInput).clear();
-		driver.findElement(commentsDivInput).sendKeys("Installed toilet handle.");
-		driver.findElement(createButton).click();
-		TimingManager.waitForPageLoad(driver, "addInvoice");	
+		InvoiceData invoice = new InvoiceData("10030", "All Day Plumbing", "Plumbing", "75.00", "Draft", "2016-04-30", "Installed toilet handle.");
+		
+		createInvoice(driver, invoice);
 	}
 
 	public void clickAddInvoice(WebDriver driver) {
 		driver.findElement(addInvoiceLink).click();		
+	}
+
+	public void createInvoice(WebDriver driver, InvoiceData invoice) {
+		// TODO Auto-generated method stub
+		driver.findElement(invoiceNoDivInput).sendKeys(invoice.getInvoiceNumber());
+
+		driver.findElement(companyNameDivInput).clear();
+		driver.findElement(companyNameDivInput).sendKeys(invoice.getCompanyName());
+		driver.findElement(typeOfWorkDivInput).clear();
+		driver.findElement(typeOfWorkDivInput).sendKeys(invoice.getTypeOfWork());
+		driver.findElement(costDivInput).clear();
+		driver.findElement(costDivInput).sendKeys(invoice.getAmount());
+		new Select(driver.findElement(selectStatusSelect)).selectByVisibleText(invoice.getStatus());
+		driver.findElement(dueDateDivInput).clear();
+		driver.findElement(dueDateDivInput).sendKeys(invoice.getDueDate());
+		driver.findElement(commentsDivInput).clear();
+		driver.findElement(commentsDivInput).sendKeys(invoice.getDescription());
+		driver.findElement(createButton).click();
+		TimingManager.waitForPageLoad(driver, "addInvoice");	
+		
 	}
 }

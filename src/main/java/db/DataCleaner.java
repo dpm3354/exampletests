@@ -17,7 +17,6 @@ public class DataCleaner {
 			URL url = new URL("http://52.86.128.173:8081/deleteAllInvoices");
 			HttpURLConnection huc = (HttpURLConnection) url.openConnection();
 			huc.setRequestMethod("DELETE");
-//			huc.setConnectTimeout(1000);
 			huc.connect();
 			if(huc.getResponseCode() != 200)
 				System.out.println("Did not respond with 200, got " +huc.getResponseCode() +" instead.");
@@ -28,8 +27,8 @@ public class DataCleaner {
 		}
 
 	}
-	@Test
-	public void test(){
+
+	public static void main(String argv[]){
 		deleteAllInvoices();
 	}
 

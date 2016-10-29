@@ -17,6 +17,6 @@ public class InvoicesPage {
 	}
 
 	public int getInvoiceCount(WebDriver driver) {
-		return driver.findElements(invoicesRows).size();
+		return driver.findElements(invoicesRows).size()-1;
 	}
 }

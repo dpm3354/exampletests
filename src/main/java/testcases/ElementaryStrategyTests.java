@@ -8,6 +8,7 @@ import org.junit.Test;
 
 import pageobjects.AddInvoicePage;
 import pageobjects.InvoicesPage;
+import utilities.TimingManager;
 
 public class ElementaryStrategyTests extends InvoiceTests{
 
@@ -32,10 +33,12 @@ public class ElementaryStrategyTests extends InvoiceTests{
 		
 		addInvoicePage.clickAddInvoice(driver);		
 		addInvoicePage.createInvoice(driver);		
-		
+
+		TimingManager.wait(500);	
+
 		int rowCount = new InvoicesPage().getInvoiceCount(driver);		
 
-		assertEquals(1, rowCount-1);
+		assertEquals(1, rowCount);
 	}
 
 }
