@@ -25,4 +25,13 @@ public class TimingManager {
 		
 	}
 
+	public static void wait(int nanos) {
+
+		try {
+			Thread.sleep(nanos);
+		} catch (InterruptedException e) {			
+			e.printStackTrace();
+		}
+	}
+
 }

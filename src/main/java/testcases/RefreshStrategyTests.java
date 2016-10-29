@@ -6,16 +6,21 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import db.DataCleaner;
 import pageobjects.AddInvoicePage;
 import pageobjects.InvoicesPage;
+import utilities.TimingManager;
 
-public class ElementaryStrategyTests extends InvoiceTests{
+public class RefreshStrategyTests extends InvoiceTests{
 
 	@Before
 	public void setUp() {
 		super.setUp();
         driver.get(baseUrl);
         driver.manage().window().maximize();
+        
+        // This is our "refresh" code, in this case it just deletes the entire db.
+        DataCleaner.deleteAllInvoices();
  	}
 
 	@After
@@ -31,7 +36,9 @@ public class ElementaryStrategyTests extends InvoiceTests{
 		AddInvoicePage addInvoicePage = new AddInvoicePage();
 		
 		addInvoicePage.clickAddInvoice(driver);		
-		addInvoicePage.createInvoice(driver);		
+		addInvoicePage.createInvoice(driver);	
+
+		TimingManager.wait(500);
 		
 		int rowCount = new InvoicesPage().getInvoiceCount(driver);		
 
