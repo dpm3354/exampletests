@@ -9,12 +9,14 @@ import java.net.URL;
 
 import org.junit.Test;
 
+import utilities.Configuration;
+
 public class DataCleaner {
 
 	public static void deleteAllInvoices() {
-
+		
 		try {
-			URL url = new URL("http://52.86.128.173:8081/deleteAllInvoices");
+			URL url = new URL("http://"+Configuration.apiIp+":"+Configuration.apiPort+"/deleteAllInvoices");
 			HttpURLConnection huc = (HttpURLConnection) url.openConnection();
 			huc.setRequestMethod("DELETE");
 			huc.connect();
@@ -25,6 +27,7 @@ public class DataCleaner {
 		} catch (IOException e) {
 			fail("IOException: " + e.getMessage());
 		}
+		System.out.println("Respond with 200, cleaned.");
 
 	}
 

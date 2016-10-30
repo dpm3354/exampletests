@@ -5,10 +5,12 @@ import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
+import utilities.Configuration;
+
 public class InvoiceTests {
 	
 	protected WebDriver driver;
-	protected static final String baseUrl = "http://52.55.130.111";
+	protected static final String baseUrl = "http://"+Configuration.applicationIp;
 	protected static final String pathToChromeDriver = "/Users/dpm3354/working/DataStrategiesWorkspace/KylesWork/exampletests/src/main/resources/chromedriver";
 
 	public void setUp(){
