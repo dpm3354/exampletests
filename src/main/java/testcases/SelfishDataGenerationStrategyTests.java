@@ -19,12 +19,12 @@ public class SelfishDataGenerationStrategyTests extends InvoiceTests{
         driver.get(baseUrl);
         driver.manage().window().maximize();
         
-        // Note there is no clean up here.
+        // Note: no clean up here.
  	}
 
 	@After
 	public void tearDown() {
-        // Note there is no clean up here either.
+        // Note: no clean up here either.
 
 		if (driver != null) {
 			driver.quit();
@@ -40,8 +40,6 @@ public class SelfishDataGenerationStrategyTests extends InvoiceTests{
 
 		addInvoicePage.clickAddInvoice(driver);		
 		addInvoicePage.createInvoice(driver, InvoiceDataGenerator.generate());	
-
-		TimingManager.wait(500);
 		
 		int rowCount = new InvoicesPage().getInvoiceCount(driver);		
 

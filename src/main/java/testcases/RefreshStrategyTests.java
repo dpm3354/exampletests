@@ -19,9 +19,11 @@ public class RefreshStrategyTests extends InvoiceTests{
         driver.get(baseUrl);
         driver.manage().window().maximize();
         
-        // This is our "refresh" code, in this case it just deletes the entire db.
+        // This is our "refresh" code. 
+        // It deletes all invoices in db.
+        // Most real-world refreshes 
+        // will be more complex.
         DataCleaner.deleteAllInvoices();
-
 	}
 
 	@After
@@ -40,11 +42,15 @@ public class RefreshStrategyTests extends InvoiceTests{
 		addInvoicePage.clickAddInvoice(driver);		
 		addInvoicePage.createInvoice(driver);	
 
-		TimingManager.wait(500);	
-
 		int rowCount = new InvoicesPage().getInvoiceCount(driver);		
 
 		assertEquals(1, rowCount);
 	}
 
 }
+
+
+
+
+
+

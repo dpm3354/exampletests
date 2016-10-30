@@ -16,7 +16,7 @@ public class ElementaryStrategyTests extends InvoiceTests{
 	public void setUp() {
 		super.setUp();
         driver.get(baseUrl);
-        driver.manage().window().maximize();
+        driver.manage().window().maximize();        
  	}
 
 	@After
@@ -33,8 +33,6 @@ public class ElementaryStrategyTests extends InvoiceTests{
 		
 		addInvoicePage.clickAddInvoice(driver);		
 		addInvoicePage.createInvoice(driver);		
-
-		TimingManager.wait(500);	
 
 		int rowCount = new InvoicesPage().getInvoiceCount(driver);		
 

@@ -77,4 +77,12 @@ public class InvoiceData {
 		this.typeOfWork = typeOfWork;
 	}
 
+	@Override
+	public String toString() {
+		return "InvoiceData [invoiceNumber=" + invoiceNumber + ", companyName=" + companyName + ", typeOfWork="
+				+ typeOfWork + ", amount=" + amount + ", status=" + status + ", dueDate=" + dueDate + ", description="
+				+ description + "]";
+	}
+	
+
 }

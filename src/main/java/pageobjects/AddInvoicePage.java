@@ -23,13 +23,9 @@ public class AddInvoicePage {
 	
 	public void createInvoice(WebDriver driver) {
 		// add an invoice
-		driver.findElement(invoiceNoDivInput).clear();
-
-		// these have to change for elementary strategy
-		// int invoiceNumber = ThreadLocalRandom.current().nextInt(10000, 10200);
-
 		// hardcoded
-		InvoiceData invoice = new InvoiceData("10030", "All Day Plumbing", "Plumbing", "75.00", "Draft", "2016-04-30", "Installed toilet handle.");
+		InvoiceData invoice = new InvoiceData("10030", "All Day Plumbing", "Plumbing", "75.00", "Draft", 
+				"2016-04-30", "Installed toilet handle.");
 		
 		createInvoice(driver, invoice);
 	}
@@ -39,22 +35,28 @@ public class AddInvoicePage {
 	}
 
 	public void createInvoice(WebDriver driver, InvoiceData invoice) {
-		// TODO Auto-generated method stub
+		driver.findElement(invoiceNoDivInput).clear();
 		driver.findElement(invoiceNoDivInput).sendKeys(invoice.getInvoiceNumber());
-
+		
 		driver.findElement(companyNameDivInput).clear();
 		driver.findElement(companyNameDivInput).sendKeys(invoice.getCompanyName());
+		
 		driver.findElement(typeOfWorkDivInput).clear();
 		driver.findElement(typeOfWorkDivInput).sendKeys(invoice.getTypeOfWork());
+		
 		driver.findElement(costDivInput).clear();
 		driver.findElement(costDivInput).sendKeys(invoice.getAmount());
+		
 		new Select(driver.findElement(selectStatusSelect)).selectByVisibleText(invoice.getStatus());
+		
 		driver.findElement(dueDateDivInput).clear();
 		driver.findElement(dueDateDivInput).sendKeys(invoice.getDueDate());
+		
 		driver.findElement(commentsDivInput).clear();
 		driver.findElement(commentsDivInput).sendKeys(invoice.getDescription());
-		driver.findElement(createButton).click();
-		TimingManager.waitForPageLoad(driver, "addInvoice");	
 		
+		driver.findElement(createButton).click();
+		TimingManager.waitForPageLoad(driver, "addInvoice");		
+		TimingManager.wait(500);	
 	}
 }
