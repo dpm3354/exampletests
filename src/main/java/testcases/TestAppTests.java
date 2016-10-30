@@ -13,6 +13,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
 
+import utilities.Configuration;
 import utilities.ResponseHandler;
 
 import java.io.IOException;
@@ -31,19 +32,14 @@ import static org.junit.Assert.fail;
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TestAppTests {
     private WebDriver driver;
-    private static final String baseUrl = "http://52.55.130.111";
+    private static final String baseUrl = "http://"+Configuration.applicationIp;
     private boolean acceptNextAlert = true;
-    private StringBuffer verificationErrors = new StringBuffer();
-
-    
-    
-    
-    
+    private StringBuffer verificationErrors = new StringBuffer();    
     
 
     @Before
     public void setUp() throws Exception {
-    		System.setProperty("webdriver.chrome.driver", "/Users/dpm3354/working/DataStrategiesWorkspace/KylesWork/kyle_brueggy-testapp_testing-fc992548b8b7/src/main/resources/chromedriver");
+    		System.setProperty("webdriver.chrome.driver", Configuration.pathToChromeDriver);
     		driver = new ChromeDriver();
         
         if(ResponseHandler.getResponseCode(baseUrl) != 200){

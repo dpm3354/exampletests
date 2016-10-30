@@ -69,7 +69,7 @@ def deleteInvoice(invoiceNo):
 
 
 def deleteAllInvoices():
-    invoicesToDelete = getInvoices()
+    invoicesToDelete is= getInvoices()
     for x in invoicesToDelete:
         print('Deleting invoiceNo: ' + x['invoiceNo'])
         deleteInvoice(x['invoiceNo'])

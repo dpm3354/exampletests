@@ -11,7 +11,7 @@ public class InvoiceTests {
 	
 	protected WebDriver driver;
 	protected static final String baseUrl = "http://"+Configuration.applicationIp;
-	protected static final String pathToChromeDriver = "/Users/dpm3354/working/DataStrategiesWorkspace/KylesWork/exampletests/src/main/resources/chromedriver";
+	protected static final String pathToChromeDriver = Configuration.pathToChromeDriver;
 
 	public void setUp(){
 		System.setProperty("webdriver.chrome.driver", pathToChromeDriver);
