@@ -38,7 +38,6 @@ public class SelfishDataGenerationStrategyTests extends InvoiceTests{
 
 		int originalRowCount = new InvoicesPage().getInvoiceCount(driver);		
 
-		addInvoicePage.clickAddInvoice(driver);		
 		addInvoicePage.createInvoice(driver, InvoiceDataGenerator.generate());	
 		
 		int rowCount = new InvoicesPage().getInvoiceCount(driver);		

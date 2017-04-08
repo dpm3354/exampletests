@@ -9,6 +9,7 @@ import java.net.URL;
 
 import org.junit.Test;
 
+import testcases.InvoiceTests;
 import utilities.Configuration;
 
 public class DataCleaner {
@@ -22,12 +23,14 @@ public class DataCleaner {
 			huc.connect();
 			if(huc.getResponseCode() != 200)
 				System.out.println("Did not respond with 200, got " +huc.getResponseCode() +" instead.");
+			else{
+				System.out.println("Responded with 200, cleaned.");
+			}
 		} catch (MalformedURLException e) {
 			fail("Bad URL: " + e.getMessage());
 		} catch (IOException e) {
 			fail("IOException: " + e.getMessage());
 		}
-		System.out.println("Respond with 200, cleaned.");
 
 	}
 

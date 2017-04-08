@@ -39,7 +39,6 @@ public class RefreshStrategyTests extends InvoiceTests{
 	public void addInvoiceTest() {
 		AddInvoicePage addInvoicePage = new AddInvoicePage();
 		
-		addInvoicePage.clickAddInvoice(driver);		
 		addInvoicePage.createInvoice(driver);	
 
 		int rowCount = new InvoicesPage().getInvoiceCount(driver);		
