@@ -8,7 +8,6 @@ import org.junit.Test;
 
 import pageobjects.AddInvoicePage;
 import pageobjects.InvoicesPage;
-import utilities.TimingManager;
 
 public class ElementaryStrategyTests extends InvoiceTests{
 

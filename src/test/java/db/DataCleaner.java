@@ -7,9 +7,6 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-import org.junit.Test;
-
-import testcases.InvoiceTests;
 import utilities.Configuration;
 
 public class DataCleaner {
