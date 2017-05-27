@@ -22,7 +22,7 @@ public class ResetExample {
 		
 		jedis.del("tutorial-name1", "tutorial-name2");
 		System.out.println("Stored string in redis:: " + jedis.mget("tutorial-name1", "tutorial-name2"));
-		
+		jedis.close();
 	}
 	
 }

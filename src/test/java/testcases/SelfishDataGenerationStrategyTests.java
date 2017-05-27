@@ -6,10 +6,8 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import db.DataCleaner;
 import pageobjects.AddInvoicePage;
 import pageobjects.InvoicesPage;
-import utilities.TimingManager;
 
 public class SelfishDataGenerationStrategyTests extends InvoiceTests{
 
